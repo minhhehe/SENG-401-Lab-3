@@ -4,25 +4,34 @@
         <meta charset="utf-8">
         <title>SENG 401 Lab 3</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="script\clientscript.js"></script>
     </head>
     <body>
         <form id="processingForm" method="post">
           Enter first and second point: <br>
           Enter with format "Lat1,Long1;Lat2,Long2": <br>
           <input id="task5Value" type="text" name="value">
-          <select>
+          <select id="typeListID" name="typelist" form="typeform">
             <option value="JSON">JSON</option>
             <option value="XML">XML</option>
             <option value="CSV">Comma Separated Values</option>
             <option value="Table">User Designed Table</option>
           </select>
+          <select id="sectionListID" name="sectionList" form="sectionForm">
+            <option value="SW">SW</option>
+            <option value="NW">NW</option>
+            <option value="SE">SE</option>
+            <option value="NE">NE</option>
+          </select>
           <br> <br>
+          <input id="task11Button" type="submit" value="Click for name processing">
+          <input id="task12Button" type="submit" value="Click for summary processing">
           <br>
           <br>
         </form>
 
-        <div id="task5Space"> </div>
-
-        <button id="likeButton">like</button>
+        <div id="resultSpace11"> </div>
+        <div id="resultSpace12"> </div>
+        <button id="likeButton">idkwhatthisbuttondo</button>
     </body>
 </html>
