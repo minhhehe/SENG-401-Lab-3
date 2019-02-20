@@ -20,13 +20,15 @@
   $dsn = "pgsql:host=$host; port=$port; dbname=$db; user=$username;
   password=$password";
   try{
-    $input_school = $_POST["school_data"];
-    $input_type = $_POST['type_data'];
+
+    $input_type = $_POST['section_data'];
+    echo $input_type;
     // create a PostgreSQL database connection
     $conn = new PDO($dsn);
     // display a message if connected to the PostgreSQL successfully
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // set the PDO error mode to Exception
+
     //prepare the statement
     $statement = $conn->prepare("SELECT * FROM CalgarySchools
       WHERE NAME LIKE :input");

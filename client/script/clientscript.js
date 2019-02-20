@@ -13,6 +13,25 @@ $(document).ready(function() {
       },
       type: 'post',
       success: function(php_script_response){
+        $('#resultSpace11').empty();
+        $('#resultSpace11').html(php_script_response);
+      }
+     });
+     return false;
+  });
+
+  $("#task12Button").on("click", function(e) {
+    e.preventDefault();
+    var section_selected = $('#sectionListID option:selected').text();
+    $.ajax({
+      url: 'http://localhost:80/server/task12.php', // point to server-side PHP script
+      //dataType: 'text',  // what to expect back from the PHP script, if anything
+      data: {
+        section_data: section_selected
+      },
+      type: 'post',
+      success: function(php_script_response){
+        $('#resultSpace11').empty();
         $('#resultSpace11').html(php_script_response);
       }
      });
