@@ -48,6 +48,30 @@
     }
   }
 
+  function displayTableMySQL($data) {
+      echo "<table style='width:100%'>";
+      echo "<tr>";
+      echo "<th>School Name</th>";
+      echo "<th>Type</th>";
+      echo "<th>Sector</th>";
+      echo "<th>Address_AB</th>";
+      echo "<th>City</th>";
+      echo "<th>Province</th>";
+      echo "<th>Postal_code</th>";
+      echo "<th>Longitude</th>";
+      echo "<th>Latitude</th>";
+      echo "</tr>";
+      // output data of each row
+      while($row = $data->fetch_assoc()) {
+        echo "<tr>";
+        foreach ($row as $a_row_data => $a_row_data_value) {
+          echo "<td>$a_row_data_value</td>";
+        }
+        echo "</tr>";
+      }
+      echo "</table>";
+  }
+
   function displayCSV($data) {
     if (count($data) > 0) {
       $delimiter =";";

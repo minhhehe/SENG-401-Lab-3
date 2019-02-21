@@ -32,37 +32,44 @@
     // prepare the statement
     // $statement = $conn->prepare("SELECT * FROM CalgarySchools
     //   WHERE NAME LIKE ?");
-    //   $tosearch = "%$input_school%";
+       $tosearch = "'%".$input_school."%'";
     //   $statement->bind_param("s", $tosearch);
     //   $result2 = $statement->execute();
 
-      $sql = "SELECT NAME FROM CalgarySchools WHERE NAME LIKE $tosearch";
-      $result = $conn->query("SELECT * FROM CalgarySchools");
-      if ($result->num_rows > 0) {
-    // output data of each row
-      while($row = $result->fetch_assoc()) {
-          var_dump($row);
-        }
+      $sql = "SELECT * FROM CalgarySchools WHERE NAME LIKE $tosearch";
+      $result = $conn->query($sql);
+      if (!$result) {
+        echo "Nothing found";
       } else {
-        echo "0 results";
+        if ($result->num_rows > 0) {
+          echo "<br>";
+          switch($input_type) {
+            case "XML":
+              displayXML($result);
+              break;
+            case "User Designed Table":
+              displayTableMySQL($result);
+              break;
+            case "JSON":
+              displayJSON($result);
+              break;
+            case "Comma Separated Values":
+              displayCSV($result);
+              break;
+          }
+      // output data of each row
+        while($row = $result->fetch_assoc()) {
+            var_dump($row);
+          }
+        } else {
+
+          echo "0 results";
+        }
       }
 
 
-      echo "<br>";
-      switch($input_type) {
-        case "XML":
-          displayXML($result2);
-          break;
-        case "User Designed Table":
-          displayTable($result2);
-          break;
-        case "JSON":
-          displayJSON($result2);
-          break;
-        case "Comma Separated Values":
-          displayCSV($result2);
-          break;
-      }
+
+
 
     } catch (PDOException $e){
       // report error message
