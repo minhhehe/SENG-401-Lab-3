@@ -3,7 +3,7 @@ $(document).ready(function() {
   $("#task11Button").on("click", function(e) {
     var urlToUse;
     if ($("#MySQLRadio").is(":checked")) {
-      urlToUse = "http://localhost:80/server/task11PDO.php";
+      urlToUse = "http://localhost:80/server/task11MySQL.php";
     } else if ($("#PostgreSQLRadio").is(":checked")) {
       urlToUse = "http://localhost:80/server/task11PDO.php";
     }
@@ -31,7 +31,7 @@ $(document).ready(function() {
   $("#task12Button").on("click", function(e) {
     var urlToUse;
     if ($("#MySQLRadio").is(":checked")) {
-      urlToUse = "http://localhost:80/server/task11PDO.php";
+      urlToUse = "http://localhost:80/server/task11MySQL.php";
     } else if ($("#PostgreSQLRadio").is(":checked")) {
       urlToUse = "http://localhost:80/server/task11PDO.php";
     }
