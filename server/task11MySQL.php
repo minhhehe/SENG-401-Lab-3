@@ -29,8 +29,7 @@
     }
     echo "Connected successfully";
     echo "<br>";
-       $tosearch = "'%".$input_school."%'";
-
+      $tosearch = "'%".$input_school."%'";
       $sql = "SELECT * FROM CalgarySchools WHERE NAME LIKE $tosearch";
       $result = $conn->query($sql);
       if (!$result) {
