@@ -93,8 +93,78 @@
     }
   }
 
-  function displaySummary($data) {
-    echo "Not implemented yet";
+  function displaySummaryXML($data) {
+    if (count($data) > 0) {
+      echo "<?xml version='1.0' encoding='UTF-8'?>";
+      echo "<br>";
+      echo "<CalgarySchools>";
+      echo "<br>";
+      foreach ($data as $a_row) {
+        foreach ($a_row as $a_row_data => $a_row_data_value) {
+          echo "<$a_row_data>";
+          echo "$a_row_data_value";
+          echo "</$a_row_data>";
+        }
+        echo "<br>";
+      }
+      echo "</CalgarySchools>";
+    } else {
+      echo "No school with the above input found <br>";
+    }
+  }
+
+  function displaySummaryTable($data) {
+    if (count($data) > 0) {
+      echo "<table style='width:100%'>";
+      echo "<tr>";
+      echo "<th>Type</th>";
+      echo "<th>Number</th>";
+      echo "</tr>";
+
+      foreach ($data as $a_row) {
+        echo "<tr>";
+        foreach ($a_row as $a_row_data => $a_row_data_value) {
+          echo "<td>$a_row_data_value</td>";
+        }
+        echo "</tr>";
+      }
+      echo "</table>";
+    } else {
+      echo "No school with the above input found <br>";
+    }
+  }
+
+  function displaySummaryCSV($data) {
+    if (count($data) > 0) {
+      $delimiter =";";
+      $f = fopen('php://memory', 'w');
+      $a_header = [
+        "Type",
+        "Number"
+      ];
+      fputcsv($f, $a_header, $delimiter);
+      foreach ($data as $a_row) {
+        fputcsv($f, $a_row, $delimiter);
+      }
+      fseek($f, 0);
+      fpassthru($f);
+    } else {
+      echo "No school with the above input found <br>";
+    }
+  }
+
+  function displaySummaryJSON($data) {
+    if (count($data) > 0) {
+      $a_header = [
+        "Type",
+        "Number"
+      ];
+      echo json_encode($a_header);
+      echo "<br>";
+      echo json_encode($data);
+    } else {
+      echo "No school with the above input found <br>";
+    }
   }
 
  ?>

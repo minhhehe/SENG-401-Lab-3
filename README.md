@@ -1,4 +1,6 @@
 # PLEASE READ - DATABASE CONNECTION INSTRUCTIONS
+# Update: 2019/02/20: Task 1.1 Complete
+# Update: 2019/02/20: Task 1.2 Complete
 ## How to connect to the database
 1.  Pull the file `dbConnectorEXAMPLE.php` from the master branch.
 2.  Rename `dbConnectorEXAMPLE.php` to `dbConnector.php`

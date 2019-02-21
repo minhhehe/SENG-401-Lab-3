@@ -21,7 +21,8 @@
   password=$password";
   try{
 
-    $input_type = $_POST['section_data'];
+    $section_type = $_POST['section_data'];
+    $input_type = $_POST['type_data'];
     echo $input_type;
     // create a PostgreSQL database connection
     $conn = new PDO($dsn);
@@ -30,26 +31,25 @@
     // set the PDO error mode to Exception
 
     //prepare the statement
-    $statement = $conn->prepare("SELECT * FROM CalgarySchools
-      WHERE NAME LIKE :input");
-      $tosearch = "%$input_school%";
-      $statement->bindParam(":input", $tosearch);
+    $statement = $conn->prepare("SELECT TYPE, COUNT(TYPE) FROM CalgarySchools
+     WHERE Sector = :input GROUP BY TYPE");
+      $statement->bindParam(":input", $section_type);
       $statement->execute();
       $result = $statement->setFetchMode(PDO::FETCH_ASSOC);
       $result2 = $statement->fetchAll();
       echo "<br>";
       switch($input_type) {
         case "XML":
-          displayXML($result2);
+          displaySummaryXML($result2);
           break;
         case "User Designed Table":
-          displayTable($result2);
+          displaySummaryTable($result2);
           break;
         case "JSON":
-          displayJSON($result2);
+          displaySummaryJSON($result2);
           break;
         case "Comma Separated Values":
-          displayCSV($result2);
+          displaySummaryCSV($result2);
           break;
       }
 
