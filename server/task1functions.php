@@ -196,6 +196,22 @@
     }
   }
 
+  function displaySummaryXMLMySQL($data) {
+      echo "<?xml version='1.0' encoding='UTF-8'?>";
+      echo "<br>";
+      echo "<CalgarySchools>";
+      echo "<br>";
+      foreach ($data as $a_row) {
+        foreach ($a_row as $a_row_data => $a_row_data_value) {
+          echo "<$a_row_data>";
+          echo "$a_row_data_value";
+          echo "</$a_row_data>";
+        }
+        echo "<br>";
+      }
+      echo "</CalgarySchools>";
+  }
+
   function displaySummaryTable($data) {
     if (count($data) > 0) {
       echo "<table style='width:100%'>";
@@ -215,6 +231,24 @@
     } else {
       echo "No school with the above input found <br>";
     }
+  }
+
+  function displaySummaryTableMySQL($data) {
+      echo "<table style='width:100%'>";
+      echo "<tr>";
+      echo "<th>Type</th>";
+      echo "<th>Number</th>";
+      echo "</tr>";
+
+      while($row = $data->fetch_assoc()) {
+        echo "<tr>";
+        foreach ($row as $a_row_data => $a_row_data_value) {
+          echo "<td>$a_row_data_value</td>";
+        }
+        echo "</tr>";
+      }
+
+      echo "</table>";
   }
 
   function displaySummaryCSV($data) {
