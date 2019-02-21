@@ -20,6 +20,23 @@
     }
   }
 
+  function displayXMLMySQL($data) {
+      echo "<?xml version='1.0' encoding='UTF-8'?>";
+      echo "<br>";
+      echo "<CalgarySchools>";
+      echo "<br>";
+
+      while($row = $data->fetch_assoc()) {
+        foreach ($row as $a_row_data => $a_row_data_value) {
+          echo "<$a_row_data>";
+          echo "$a_row_data_value";
+          echo "</$a_row_data>";
+        }
+        echo "<br>";
+      }
+      echo "</CalgarySchools>";
+  }
+
   function displayTable($data) {
     if (count($data) > 0) {
       echo "<table style='width:100%'>";
@@ -72,6 +89,7 @@
       echo "</table>";
   }
 
+
   function displayCSV($data) {
     if (count($data) > 0) {
       $delimiter =";";
@@ -97,6 +115,29 @@
     }
   }
 
+  function displayCSVMySQL($data) {
+      $delimiter =";";
+      $f = fopen('php://memory', 'w');
+      $a_header = ["Name",
+        "Type",
+        "Sector",
+        "Address",
+        "City",
+        "Province",
+        "Postal",
+        "Longitude",
+        "Latitude"
+      ];
+      fputcsv($f, $a_header, $delimiter);
+
+      while($row = $data->fetch_assoc()) {
+        fputcsv($f, $row, $delimiter);
+      }
+
+      fseek($f, 0);
+      fpassthru($f);
+  }
+
   function displayJSON($data) {
     if (count($data) > 0) {
       $a_header = ["Name",
@@ -115,6 +156,24 @@
     } else {
       echo "No school with the above input found <br>";
     }
+  }
+
+  function displayJSONMySQL($data) {
+      $a_header = ["Name",
+        "Type",
+        "Sector",
+        "Address",
+        "City",
+        "Province",
+        "Postal",
+        "Longitude",
+        "Latitude"
+      ];
+      echo json_encode($a_header);
+      while ($row = mysqli_fetch_assoc($data)) {
+        $test[] = $row;
+      }
+      echo json_encode($test);
   }
 
   function displaySummaryXML($data) {

@@ -45,16 +45,16 @@
           echo "<br>";
           switch($input_type) {
             case "XML":
-              displayXML($result);
+              displayXMLMySQL($result);
               break;
             case "User Designed Table":
               displayTableMySQL($result);
               break;
             case "JSON":
-              displayJSON($result);
+              displayJSONMySQL($result);
               break;
             case "Comma Separated Values":
-              displayCSV($result);
+              displayCSVMySQL($result);
               break;
           }
       // output data of each row
