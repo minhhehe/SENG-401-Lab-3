@@ -7,11 +7,17 @@
         <script src="script\clientscript.js"></script>
     </head>
     <body>
+        Default Database name is "SENG401" and Server "localhost"
+        <br>
+        Port 5432 for PostgreSQL and 3306 for MySQL
+        <br>
+        <br>
         Enter your username and password for your SQL database:
+        <br>
         <input id="username" type="text" name="usernameForSQL">
         <input id="password" type="password" name="passwordForSQL">
         <br>
-        <input id="MySQLRadio" type="radio" name="databaseType" value="mySQL"> MySQL<br>
+        <input id="MySQLRadio" type="radio" name="databaseType" value="mySQL" checked="checked"> MySQL<br>
         <input id="PostgreSQLRadio" type="radio" name="databaseType" value="PostgreSQL"> PostgreSQL<br>
         <form id="processingForm" method="post">
           Enter your search and select the output format: <br>

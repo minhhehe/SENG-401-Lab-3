@@ -201,8 +201,8 @@
       echo "<br>";
       echo "<CalgarySchools>";
       echo "<br>";
-      foreach ($data as $a_row) {
-        foreach ($a_row as $a_row_data => $a_row_data_value) {
+      while($row = $data->fetch_assoc()) {
+        foreach ($row as $a_row_data => $a_row_data_value) {
           echo "<$a_row_data>";
           echo "$a_row_data_value";
           echo "</$a_row_data>";
@@ -270,6 +270,21 @@
     }
   }
 
+  function displaySummaryCSVMySQL($data) {
+      $delimiter =";";
+      $f = fopen('php://memory', 'w');
+      $a_header = [
+        "Type",
+        "Number"
+      ];
+      fputcsv($f, $a_header, $delimiter);
+      while($row = $data->fetch_assoc()) {
+        fputcsv($f, $row, $delimiter);
+      }
+      fseek($f, 0);
+      fpassthru($f);
+  }
+
   function displaySummaryJSON($data) {
     if (count($data) > 0) {
       $a_header = [
@@ -282,6 +297,18 @@
     } else {
       echo "No school with the above input found <br>";
     }
+  }
+
+  function displaySummaryJSONMySQL($data) {
+      $a_header = [
+        "Type",
+        "Number"
+      ];
+      echo json_encode($a_header);
+      while ($row = mysqli_fetch_assoc($data)) {
+        $test[] = $row;
+      }
+      echo json_encode($test);
   }
 
  ?>

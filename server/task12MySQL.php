@@ -32,12 +32,10 @@
     // prepare the statement
     // $statement = $conn->prepare("SELECT * FROM CalgarySchools
     //   WHERE NAME LIKE ?");
-       $tosearch = "'%".$input_school."%'";
     //   $statement->bind_param("s", $tosearch);
     //   $result2 = $statement->execute();
-
-      $sql = "SELECT TYPE, COUNT(TYPE) FROM CalgarySchools
-       WHERE Sector = $section_type GROUP BY TYPE";
+    $section_type = "'".$section_type."'";
+      $sql = "SELECT TYPE, COUNT(TYPE) FROM CalgarySchools WHERE Sector = $section_type GROUP BY TYPE";
       $result = $conn->query($sql);
       if (!$result) {
         echo "Nothing found";
@@ -67,11 +65,6 @@
           echo "0 results";
         }
       }
-
-
-
-
-
     } catch (PDOException $e){
       // report error message
       echo $e->getMessage();
