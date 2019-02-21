@@ -2,6 +2,8 @@
 # Update: 2019/02/20: Task 1.1 PDO Complete
 # Update: 2019/02/20: Task 1.2 PDO Complete
 # Update: 2019/02/21: Task 1.1 + 1.2 MySQL Complete
+# Update: 2019/02/21: Task 2 Condition check Complete
+# Update: 2019/02/21: Awaiting answer from professor to continue
 ## How to connect to the database
 1.  Pull the file `dbConnectorEXAMPLE.php` from the master branch.
 2.  Rename `dbConnectorEXAMPLE.php` to `dbConnector.php`
