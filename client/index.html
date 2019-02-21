@@ -7,6 +7,12 @@
         <script src="script\clientscript.js"></script>
     </head>
     <body>
+        Enter your username and password for your SQL database:
+        <input id="username" type="text" name="usernameForSQL">
+        <input id="password" type="password" name="passwordForSQL">
+        <br>
+        <input id="MySQLRadio" type="radio" name="databaseType" value="mySQL"> MySQL<br>
+        <input id="PostgreSQLRadio" type="radio" name="databaseType" value="PostgreSQL"> PostgreSQL<br>
         <form id="processingForm" method="post">
           Enter your search and select the output format: <br>
           <input id="task1Value" type="text" name="searchvalue">
