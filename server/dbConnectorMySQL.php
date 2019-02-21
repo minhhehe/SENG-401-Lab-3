@@ -32,12 +32,5 @@
     echo "Error creating table: " . $conn->error;
   }
   echo "<br>";
-  $sql = "LOAD DATA INFILE 'C:/ProgramData/MySQL/MySQL Server 8.0/Uploads/CalgarySchools.csv' INTO TABLE CalgarySchools FIELDS TERMINATED BY ','
-  LINES TERMINATED BY '\r\n' IGNORE 1 LINES";
-  if ($conn->query($sql) === TRUE) {
-    echo "Table CalgarySchools filled successfully";
-  } else {
-    echo "Error creating table: " . $conn->error;
-  }
   echo "<br>";
 ?>
