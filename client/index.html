@@ -47,6 +47,18 @@
           <input id="task12Button" type="submit" value="Click for summary processing">
         </form>
 
+        <form id="flickrForm" method="post">
+          <br> <br>
+          Enter the longitudes and latitudes of the two points for the box
+          <br>
+          Format: 1stLongitude, 1stLatitude, 2ndLongitude, 2ndLatitude
+          <br>
+          <input id="flickrInputID" type="text" name="flickrInput" onkeyup="checkValidityOfForm(this.value)">
+          <input id="flickrInputButtonID" type="submit" name="flickrButton">
+          <br>
+          <div id="validityMessageID"></div>
+        </form>
+
         <div id="resultSpace11"> </div>
         <div id="resultSpace12"> </div>
 
