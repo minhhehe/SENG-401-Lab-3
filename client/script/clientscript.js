@@ -56,9 +56,26 @@ $(document).ready(function() {
      return false;
   });
 
+  $('#flickrInputButtonID').on("click", function(e) {
+    e.preventDefault();
+    $.ajax({
+      url: 'http://localhost:80/server/task2.php',
+      type: 'post',
+      data: {
+        coordinates: $('#flickrInputID').val(),
+        displayOption: $('#displayListID option:selected').val()
+      },
+      success: function(php_script_response) {
+        $('#resultSpace2').empty();
+        $('#resultSpace2').html(php_script_response);
+      }
+    });
+  });
+
 });
 
 function checkValidityOfForm(input) {
+  $('#resultSpace2').empty();
   var listOfInputs = input.split(",");
   if (!checkNumberOfInput(listOfInputs)) return;
   var firstNumber = parseFloat(listOfInputs[0]);
@@ -87,7 +104,7 @@ function checkIfValidInputCoordinates(long1, lat1, long2, lat2) {
     $('#flickrInputButtonID').prop("disabled", true);
     return false;
   }
-  if ((lat1 < lat2)) {
+  if ((lat1 > lat2)) {
     $('#validityMessageID').html("Left value's latitude should be smaller than right value's");
     $('#flickrInputButtonID').prop("disabled", true);
     return false;
