@@ -13,7 +13,7 @@
   <?php
   include 'task1functions.php';
   $host='localhost';
-  $db = 'seng401'; //use pgadmin to create a database e.g. SENG401
+  $db = 'seng401'; //use mysql workbench to create a database e.g. SENG401
   $username = $_POST["username"];
   $password = $_POST["password"];
   $port = 5432;
@@ -28,13 +28,8 @@
         die("Connection failed: " . $conn->connect_error);
     }
     echo "Connected successfully";
-    // set the PDO error mode to Exception
-    // prepare the statement
-    // $statement = $conn->prepare("SELECT * FROM CalgarySchools
-    //   WHERE NAME LIKE ?");
+    echo "<br>";
        $tosearch = "'%".$input_school."%'";
-    //   $statement->bind_param("s", $tosearch);
-    //   $result2 = $statement->execute();
 
       $sql = "SELECT * FROM CalgarySchools WHERE NAME LIKE $tosearch";
       $result = $conn->query($sql);
@@ -57,20 +52,10 @@
               displayCSVMySQL($result);
               break;
           }
-      // output data of each row
-        while($row = $result->fetch_assoc()) {
-            var_dump($row);
-          }
         } else {
-
           echo "0 results";
         }
       }
-
-
-
-
-
     } catch (PDOException $e){
       // report error message
       echo $e->getMessage();

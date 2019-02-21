@@ -12,7 +12,6 @@ $(document).ready(function() {
     var type_selected = $('#typeListID1 option:selected').text();
     $.ajax({
       url: urlToUse, // point to server-side PHP script
-      //dataType: 'text',  // what to expect back from the PHP script, if anything
       data: {
         school_data: school_text,
         type_data: type_selected,
@@ -40,7 +39,6 @@ $(document).ready(function() {
     var type_selected = $('#typeListID2 option:selected').text();
     $.ajax({
       url: urlToUse, // point to server-side PHP script
-      //dataType: 'text',  // what to expect back from the PHP script, if anything
       data: {
         section_data: section_selected,
         type_data: type_selected,
