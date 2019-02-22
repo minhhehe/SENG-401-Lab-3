@@ -1,6 +1,6 @@
 <?php
   /*
-    FUCK IT JUST USE WORKBENCH SCREEEEEEEEEEEE
+    SCREW IT JUST USE WORKBENCH SCREEEEEEEEEEEE
   */
   $servername = "localhost";
   $username = "minh";
