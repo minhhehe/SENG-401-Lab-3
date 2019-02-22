@@ -39,13 +39,13 @@
             case "XML":
               displaySummaryXMLMySQL($result);
               break;
-            case "User Designed Table":
+            case "Table":
               displaySummaryTableMySQL($result);
               break;
             case "JSON":
               displaySummaryJSONMySQL($result);
               break;
-            case "Comma Separated Values":
+            case "CSV":
               displaySummaryCSVMySQL($result);
               break;
           }
