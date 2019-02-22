@@ -40,13 +40,13 @@
         case "XML":
           displayXML($result2);
           break;
-        case "User Designed Table":
+        case "Table":
           displayTable($result2);
           break;
         case "JSON":
           displayJSON($result2);
           break;
-        case "Comma Separated Values":
+        case "CSV":
           displayCSV($result2);
           break;
       }

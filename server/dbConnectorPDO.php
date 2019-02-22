@@ -9,7 +9,7 @@
   $host='localhost';
   $db = 'SENG401'; //use pgadmin to create a database e.g. SENG401
   $username = 'postgres'; //usually postgres
-  $password = "Estelle@88938."; //usually postgres
+  $password = "postgres"; //usually postgres
   $port = 5432;
   $dsn = "pgsql:host=$host; port=$port; dbname=$db; user=$username;
   password=$password";

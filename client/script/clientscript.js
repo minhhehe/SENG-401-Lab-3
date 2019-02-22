@@ -11,7 +11,7 @@ $(document).ready(function() {
     }
     e.preventDefault();
     var school_text = $('#task1Value').val();
-    var type_selected = $('#typeListID1 option:selected').text();
+    var type_selected = $('#typeListID1 option:selected').val();
     $.ajax({
       url: urlToUse, // point to server-side PHP script
       data: {
@@ -37,8 +37,8 @@ $(document).ready(function() {
       urlToUse = "http://localhost:80/server/task12PDO.php";
     }
     e.preventDefault();
-    var section_selected = $('#sectionListID option:selected').text();
-    var type_selected = $('#typeListID2 option:selected').text();
+    var section_selected = $('#sectionListID option:selected').val();
+    var type_selected = $('#typeListID2 option:selected').val();
     $.ajax({
       url: urlToUse, // point to server-side PHP script
       data: {

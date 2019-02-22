@@ -16,8 +16,6 @@
   $db = 'seng401'; //use mysql workbench to create a database e.g. SENG401
   $username = $_POST["username"];
   $password = $_POST["password"];
-  $port = 5432;
-  $dsn = "pgsql:host=$host; port=$port; dbname=$db; user=$username;
   password=$password";
   try{
     $input_school = $_POST["school_data"];
@@ -41,13 +39,13 @@
             case "XML":
               displayXMLMySQL($result);
               break;
-            case "User Designed Table":
+            case "Table":
               displayTableMySQL($result);
               break;
             case "JSON":
               displayJSONMySQL($result);
               break;
-            case "Comma Separated Values":
+            case "CSV":
               displayCSVMySQL($result);
               break;
           }

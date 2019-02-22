@@ -16,8 +16,6 @@
   $db = 'seng401'; //use mysql workbench to create a database e.g. SENG401
   $username = $_POST["username"];
   $password = $_POST["password"];
-  $port = 5432;
-  $dsn = "pgsql:host=$host; port=$port; dbname=$db; user=$username;
   password=$password";
   try{
     $section_type = $_POST['section_data'];
