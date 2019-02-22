@@ -25,16 +25,16 @@ Feb 16, 2019
 
 
 ## Notes for MySQL Users
-If you get the error: "authentication method unknown to the client [caching_sha2_password]":
+- If you get the error: "authentication method unknown to the client [caching_sha2_password]":
   - MySQLi is outdated with the authentication method of MySQL so do the following:
     - Go to MySQL Workbench and create a new user by using this SQL: CREATE USER 'name'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
     - OR ALTER USER 'mysqlUsername'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mysqlUsernamePassword';
     - Remember to set the permissions of the new/altered user;
-To create a database/schema that works with the developing, do:
+- To create a database/schema that works with the developing, do:
   - Workbench SQL: CREATE SCHEMA SENG401;
-If you get the secure-file-priv error:
+- If you get the secure-file-priv error:
   - Locate the directory in Options File -> Security tab -> secure-file-priv and paste the CalgarySchools.csv in there;
-Import data using Workbench, life is good
+- Import data using Workbench, life is good
 
 ### dbConnectorEXAMPLE.php text
     <?php
