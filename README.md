@@ -31,9 +31,9 @@ If you get the error: "authentication method unknown to the client [caching_sha2
     - OR ALTER USER 'mysqlUsername'@'localhost' IDENTIFIED WITH mysql_native_password BY 'mysqlUsernamePassword';
     - Remember to set the permissions of the new/altered user;
 To create a database/schema that works with the developing, do:
-  - Workbench SQL: CREATE SCHEMA SENG401
+  - Workbench SQL: CREATE SCHEMA SENG401;
 If you get the secure-file-priv error:
-  - Locate the directory in Options File -> Security tab -> secure-file-priv and paste the CalgarySchools.csv in there
+  - Locate the directory in Options File -> Security tab -> secure-file-priv and paste the CalgarySchools.csv in there;
 Import data using Workbench, life is good
 
 ### dbConnectorEXAMPLE.php text
