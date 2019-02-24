@@ -1,0 +1,59 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+}
+
+#banner {
+    color: white;
+    background-color: navy;
+
+    width: 100%;
+    padding: 15px;
+
+    font-size: 20px;
+    text-align: center;
+}
+
+#container {
+    color: #0F0F0F;
+    padding: 10px;
+    margin-left: 5%;
+    width: 100%;
+    float: none;
+}
+
+#leftContainer {
+    display: inline-block;
+    width: 50%;
+    float: left;
+}
+
+#rightContainer {
+    display: inline-block;
+    width: 50%;
+    float: right;
+}
+
+
+.schoolInputBlock {
+    display: inline-block;
+
+    margin: 5px;
+    padding: 10px;
+
+    background-color: lightgrey;
+
+    border-radius: 10px;
+    width: 400px;
+}
+
+#schoolOutputBlock {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+
+    border-style: solid;
+    border-color: lightgrey;
+    border-width: medium;
+    border-radius: 10px;
+}
