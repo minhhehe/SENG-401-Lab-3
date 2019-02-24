@@ -1,5 +1,5 @@
 <?php
-include_once "dbConnector.php";
+include "dbConnector.php";
 
 $inputName = $inputFormat = $inputSector = "";
 
@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <div id="container">
             <div id="leftContainer">
-                <div class="schoolInputBlock">
+                <div class="inputBlock">
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                         <p>School name: <input type="text" name="inputName" value="<?php echo $inputName; ?>"></p>
                         <input type="submit" name="submit" value="Submit">
@@ -38,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             <div id="rightContainer">
-                <div id="schoolOutputBlock">
+                <div id="outputBlock">
                     <p>The output</p>
                 </div>
             </div>

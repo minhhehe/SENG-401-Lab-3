@@ -35,7 +35,7 @@ body {
 }
 
 
-.schoolInputBlock {
+.inputBlock {
     display: inline-block;
 
     margin: 5px;
@@ -47,7 +47,7 @@ body {
     width: 400px;
 }
 
-#schoolOutputBlock {
+#outputBlock {
     display: inline-block;
     margin: 5px;
     padding: 10px;
