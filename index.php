@@ -1,5 +1,5 @@
 <?php
-include "dbConnector.php";
+// include "dbConnector.php";
 
 $inputName = $inputFormat = $inputSector = "";
 
@@ -16,11 +16,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <link rel="stylesheet" href="style.css"></link>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
-            $(function() {
-                $.get("handlerequest.php", function(data, status) {
-                    $("#container").append("<p>" + data + "</p>");
-                });
-            });
+            // $(function() {
+            //     $.get("handlerequest.php", function(data, status) {
+            //         $("#container").append("<p>" + data + "</p>");
+            //     });
+            // });
         </script>
     </head>
     <body>
@@ -33,6 +33,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="inputBlock">
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
                         <p>School name: <input type="text" name="inputName" value="<?php echo $inputName; ?>"></p>
+                        <input type="radio" name="inputFormat" value="json">JSON<br/>
+                        <input type="radio" name="inputFormat" value="xml">XML<br/>
+                        <input type="radio" name="inputFormat" value="csv">CSV<br/>
+                        <input type="radio" name="inputFormat" value="table">Table<br/>
+                        <br/>
                         <input type="submit" name="submit" value="Submit">
                     </form>
                 </div>
