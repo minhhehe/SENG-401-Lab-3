@@ -15,11 +15,87 @@ function findSchool($name, $format) {
     $query = $GLOBALS['conn']->prepare("SELECT $nameCol FROM $table WHERE $nameCol LIKE :name");
     $query->bindValue(":name", "%$name%");
     $query->execute();
-    $results = $query->fetchAll();
+    $results = $query->fetchAll(PDO::FETCH_ASSOC); // Fetch all results with only associative indexing
 
     echo "<br/> Results are: ";
     var_dump($results);
+
+    $GLOBALS['output'] = getOutput($results, $format);
 }
+
+/**
+ * Get an
+ */
+function getOutput($queryResults, $format) {
+    switch ($format) {
+        case "json":
+            $output = getJsonOutput($queryResults);
+            break;
+        case "xml":
+            $output = getXmlOutput($queryResults);
+            break;
+        case "csv":
+            $output = getCsvOutput($queryResults);
+            break;
+        case "table":
+            $output = getTableOutput($queryResults);
+            break;
+        default:
+            exit("Requested format '$format' not recognized!");
+    }
+
+    return str_replace("  ", "&nbsp;&nbsp;",str_replace("\n", "<br/>", $output));
+}
+
+/**
+ * Get a JSON-formatted output from a query result
+ */
+function getJsonOutput($queryResults) {
+    return json_encode($queryResults, JSON_PRETTY_PRINT);
+}
+
+/**
+ * Get an XML-formatted output from a query result.
+ * The output is encoded with the htmlspecialchars() function
+ */
+function getXmlOutput($queryResults) {
+    $output = "<results>\n";
+    foreach ($queryResults as $result) {
+        $output .= "    <result>\n";
+
+        foreach ($result as $colName => $colVal) {
+            $output .= "        <" . $colName . ">" . $colVal . "</" . $colName . ">\n";
+        }
+
+        $output .= "    </result>\n";
+    }
+
+    $output .= "</results>";
+    return htmlspecialchars($output);
+}
+
+/**
+ * Get a CSV-formatted output from a query result
+ */
+function getCsvOutput($queryResults) {
+    $output = "";
+
+    // Build header
+    $output .= implode(",", array_keys($queryResults[0]));
+    $output .= "\n";
+
+    $output .= implode("\n", array_map(function($result) { return implode(",", array_values($result)); }, $queryResults));
+
+    return $output;
+}
+
+/**
+ * Get an HTML table formatted output from a query result
+ */
+function getTableOutput($queryResults) {
+    return "Table output here!"; // FIXME complete
+}
+
 
 if ($conn) {
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
