@@ -60,5 +60,17 @@ body {
 
 .error {
     color: #CC0000;
-    /*color: green;*/
+}
+
+.outputTable {
+    color: #111111;
+}
+
+.outputTable th, td {
+    border: 0px;
+    padding: 10px;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: lightgrey;
 }
