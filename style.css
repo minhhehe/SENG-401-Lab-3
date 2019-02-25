@@ -57,3 +57,8 @@ body {
     border-width: medium;
     border-radius: 10px;
 }
+
+.error {
+    color: #CC0000;
+    /*color: green;*/
+}
