@@ -16,10 +16,6 @@ function findSchool($name, $format) {
     $query->bindValue(":name", "%$name%");
     $query->execute();
     $results = $query->fetchAll(PDO::FETCH_ASSOC); // Fetch all results with only associative indexing
-
-    echo "<br/> Results are: ";
-    var_dump($results);
-
     $GLOBALS['output'] = getOutput($results, $format);
 }
 
@@ -78,10 +74,8 @@ function getXmlOutput($queryResults) {
  * Get a CSV-formatted output from a query result
  */
 function getCsvOutput($queryResults) {
-    $output = "";
-
     // Build header
-    $output .= implode(",", array_keys($queryResults[0]));
+    $output = implode(",", array_keys($queryResults[0]));
     $output .= "\n";
 
     $output .= implode("\n", array_map(function($result) { return implode(",", array_values($result)); }, $queryResults));
@@ -93,7 +87,26 @@ function getCsvOutput($queryResults) {
  * Get an HTML table formatted output from a query result
  */
 function getTableOutput($queryResults) {
-    return "Table output here!"; // FIXME complete
+    $output = "<table>";
+
+    // Build header
+    $output .= "<tr>";
+    foreach (array_keys($queryResults[0]) as $colName) {
+        $output .= "<th>" . $colName . "</th>";
+    }
+    $output .= "</tr>";
+
+    // Build body
+    foreach ($queryResults as $result) {
+        $output .= "<tr>";
+        foreach (array_values($result) as $colVal) {
+            $output .= "<td>" . $colVal . "</td>";
+        }
+        $output .= "</tr>";
+    }
+
+    $output .= "</table>";
+    return $output;
 }
 
 
