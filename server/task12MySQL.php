@@ -30,7 +30,7 @@
       $sql = "SELECT TYPE, COUNT(TYPE) FROM CalgarySchools WHERE Sector = $section_type GROUP BY TYPE";
       if ($section_type === "NULL") {
         $sql = "SELECT TYPE, COUNT(TYPE) FROM CalgarySchools
-         WHERE Sector IS NULL GROUP BY TYPE");
+         WHERE Sector IS NULL GROUP BY TYPE";
       }
       $result = $conn->query($sql);
       if (!$result) {
