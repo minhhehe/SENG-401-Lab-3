@@ -6,13 +6,17 @@
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
+            var gData;
+
             $(function() {
                 $.get("handlerequest.php", function(data, status) {
                     $("#container").append("<p>" + data + "</p>");
                 });
 
                 $("#submit").click(function() {
-                    $.get("handlerequest.php")
+                    $.get("handlerequest.php", function(data, status) {
+                        $("#test").append(data);
+                    })
                 })
             });
         </script>
@@ -34,5 +38,6 @@
             <button id="submit">Submit</button>
 
         </div>
+        <div id="test"></div>
     </body>
 </html>
