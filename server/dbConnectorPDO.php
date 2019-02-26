@@ -30,7 +30,7 @@
     $conn->exec($sql);
     echo "created table successfully <br>";
 
-    $sql = "COPY CalgarySchools FROM 'G:\download\CalgarySchools.csv' WITH DELIMITER ',' CSV HEADER";
+    $sql = "COPY CalgarySchools FROM '/Users/minhhehe/Downloads/CalgarySchools.csv' WITH DELIMITER ',' CSV HEADER";
     $conn->exec($sql);
     echo "Copied successfully <br>";
 
