@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>SENG 401 - Lab 3 Task 2</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            $(function() {
+                $.get("handlerequest.php", function(data, status) {
+                    $("#container").append("<p>" + data + "</p>");
+                });
+
+                $("#submit").click(function() {
+                    $.get("handlerequest.php")
+                })
+            });
+        </script>
+    </head>
+    <body>
+        <div class="inputBlock">
+            <input type="text" id="leftCoordinate" placeholder="West-most longitude">
+            <br>
+            <input type="text" id="bottomCoordinate" placeholder="South-most latitude">
+
+            <br><br>
+
+            <input type="text" id="rightCoordinate" placeholder="East-most longitude">
+            <br>
+            <input type="text" id="topCoordinate" placeholder="North-most latitude">
+
+            <br><br>
+
+            <button id="submit">Submit</button>
+
+        </div>
+    </body>
+</html>

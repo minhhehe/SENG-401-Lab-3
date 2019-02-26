@@ -1,9 +1,4 @@
 <?php
-include_once "dbConnector.php"; // Load up the dbConnector information
+$API_KEY = "334ebb0707c2e188c4522643802154df";
 
-if ($conn) {
-    echo "Connection to $db has succeeded!";
-} else {
-    echo "Connection to $db has failed!";
-}
 ?>

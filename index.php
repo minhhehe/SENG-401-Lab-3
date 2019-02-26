@@ -159,14 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <meta charset="utf-8">
         <title>SENG 401 - Lab 3</title>
         <link rel="stylesheet" href="style.css"></link>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script>
-            // $(function() {
-            //     $.get("handlerequest.php", function(data, status) {
-            //         $("#container").append("<p>" + data + "</p>");
-            //     });
-            // });
-        </script>
+        
     </head>
     <body>
         <div id="banner">
