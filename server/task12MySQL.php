@@ -16,7 +16,6 @@
   $db = 'seng401'; //use mysql workbench to create a database e.g. SENG401
   $username = $_POST["username"];
   $password = $_POST["password"];
-  password=$password";
   try{
     $section_type = $_POST['section_data'];
     $input_type = $_POST['type_data'];
@@ -29,6 +28,10 @@
     echo "<br>";
     $section_type = "'".$section_type."'";
       $sql = "SELECT TYPE, COUNT(TYPE) FROM CalgarySchools WHERE Sector = $section_type GROUP BY TYPE";
+      if ($section_type === "NULL") {
+        $sql = "SELECT TYPE, COUNT(TYPE) FROM CalgarySchools
+         WHERE Sector IS NULL GROUP BY TYPE");
+      }
       $result = $conn->query($sql);
       if (!$result) {
         echo "Nothing found";

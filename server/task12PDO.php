@@ -34,7 +34,12 @@
     $statement = $conn->prepare("SELECT TYPE, COUNT(TYPE) FROM CalgarySchools
      WHERE Sector = :input GROUP BY TYPE");
       $statement->bindParam(":input", $section_type);
+      if ($section_type === "NULL") {
+        $statement = $conn->prepare("SELECT TYPE, COUNT(TYPE) FROM CalgarySchools
+         WHERE Sector IS NULL GROUP BY TYPE");
+      }
       $statement->execute();
+
       $result = $statement->setFetchMode(PDO::FETCH_ASSOC);
       $result2 = $statement->fetchAll();
       echo "<br>";

@@ -16,7 +16,6 @@
   $db = 'seng401'; //use mysql workbench to create a database e.g. SENG401
   $username = $_POST["username"];
   $password = $_POST["password"];
-  password=$password";
   try{
     $input_school = $_POST["school_data"];
     $input_type = $_POST['type_data'];
