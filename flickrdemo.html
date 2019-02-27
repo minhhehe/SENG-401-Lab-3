@@ -14,28 +14,34 @@
                 $("#submit").click(function() {
                     $.get("handlerequest.php", {
                         requestType: $("#requestType").val(),
-                        leftLong: $("#leftLong").text(),
-                        bottomLat: $("#bottomLat").text(),
-                        rightLong: $("#rightLong").text(),
-                        topLat: $("#topLat").text()
+                        leftLong: $("#leftLong").val(),
+                        bottomLat: $("#bottomLat").val(),
+                        rightLong: $("#rightLong").val(),
+                        topLat: $("#topLat").val()
                     }, function(data, status) {
-                        $("#test").html(data);
-                    })
-                })
+                        $("#output").html(data);
+                    });
+                });
             });
         </script>
     </head>
     <body>
         <div class="inputBlock">
-            <input type="text" id="leftLong" placeholder="West-most longitude">
+            <span id="error" class="error"></span>
+
+            <label>Southwest Coordinate</label>
             <br>
-            <input type="text" id="bottomLat" placeholder="South-most latitude">
+            <input type="text" id="leftLong" class="coordinateInput" placeholder="West-most longitude"></input>
+            <br>
+            <input type="text" id="bottomLat" class="coordinateInput" placeholder="South-most latitude">
 
             <br><br>
 
-            <input type="text" id="rightLong" placeholder="East-most longitude">
+            <label>Northeast Coordinate</label>
             <br>
-            <input type="text" id="topLat" placeholder="North-most latitude">
+            <input type="text" id="rightLong" class="coordinateInput" placeholder="East-most longitude">
+            <br>
+            <input type="text" id="topLat" class="coordinateInput" placeholder="North-most latitude">
 
             <br><br>
 
@@ -49,6 +55,6 @@
             <button id="submit">Submit</button>
 
         </div>
-        <div id="test"></div>
+        <div id="output"></div>
     </body>
 </html>

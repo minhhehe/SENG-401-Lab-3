@@ -71,14 +71,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     }
 
 
-    $resultData = getFlickrPhotos(-114, 50, -113, 51);
+    $resultData = getFlickrPhotos($leftLong, $bottomLat, $rightLong, $topLat);
 
     switch ($requestType) {
         case "photos":
             echo getImageOutputs($resultData);
             break;
         case "json":
-            echo $resultData;
+            echo htmlspecialchars($resultData);
             break;
         default:
             exit("Error: requestType $requestType not recognized");
