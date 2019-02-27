@@ -6,16 +6,20 @@
         <link rel="stylesheet" href="style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script>
-            var gData;
-
             $(function() {
                 $.get("handlerequest.php", function(data, status) {
                     $("#container").append("<p>" + data + "</p>");
                 });
 
                 $("#submit").click(function() {
-                    $.get("handlerequest.php", function(data, status) {
-                        $("#test").append(data);
+                    $.get("handlerequest.php", {
+                        requestType: $("#requestType").val(),
+                        leftLong: $("#leftLong").text(),
+                        bottomLat: $("#bottomLat").text(),
+                        rightLong: $("#rightLong").text(),
+                        topLat: $("#topLat").text()
+                    }, function(data, status) {
+                        $("#test").html(data);
                     })
                 })
             });
@@ -23,15 +27,22 @@
     </head>
     <body>
         <div class="inputBlock">
-            <input type="text" id="leftCoordinate" placeholder="West-most longitude">
+            <input type="text" id="leftLong" placeholder="West-most longitude">
             <br>
-            <input type="text" id="bottomCoordinate" placeholder="South-most latitude">
+            <input type="text" id="bottomLat" placeholder="South-most latitude">
 
             <br><br>
 
-            <input type="text" id="rightCoordinate" placeholder="East-most longitude">
+            <input type="text" id="rightLong" placeholder="East-most longitude">
             <br>
-            <input type="text" id="topCoordinate" placeholder="North-most latitude">
+            <input type="text" id="topLat" placeholder="North-most latitude">
+
+            <br><br>
+
+            <select id="requestType">
+                <option value="photos">Photos</option>
+                <option value="json">JSON</option>
+            </select>
 
             <br><br>
 

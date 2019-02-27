@@ -1,4 +1,8 @@
 <?php
+function validateInput($input) {
+    return htmlspecialchars(stripslashes(trim($input)));
+}
+
 /**
  *  Get 20 photos from Flickr inside the given corodinates
  *  Returns the JSON response from the Flickr API
@@ -43,6 +47,42 @@ function getImageOutputs($responseData) {
     return $output;
 }
 
-echo getImageOutputs(getFlickrPhotos(-114, 50, -113, 51));
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    if (!empty($_GET["requestType"])) {
+        $requestType = validateInput($_GET["requestType"]);
+    } else {
+        exit("Error: Missing requestType parameter.");
+    }
+
+    if (!empty($_GET["leftLong"])) {
+        $leftLong = validateInput($_GET["leftLong"]);
+    }
+
+    if (!empty($_GET["bottomLat"])) {
+        $bottomLat = validateInput($_GET["bottomLat"]);
+    }
+
+    if (!empty($_GET["rightLong"])) {
+        $rightLong = validateInput($_GET["rightLong"]);
+    }
+
+    if (!empty($_GET["topLat"])) {
+        $topLat = validateInput($_GET["topLat"]);
+    }
+
+
+    $resultData = getFlickrPhotos(-114, 50, -113, 51);
+
+    switch ($requestType) {
+        case "photos":
+            echo getImageOutputs($resultData);
+            break;
+        case "json":
+            echo $resultData;
+            break;
+        default:
+            exit("Error: requestType $requestType not recognized");
+    }
+}
 
 ?>
