@@ -28,9 +28,9 @@
     echo "<br>";
     $section_type = "'".$section_type."'";
       $sql = "SELECT TYPE, COUNT(TYPE) FROM CalgarySchools WHERE Sector = $section_type GROUP BY TYPE";
-      if ($section_type === "NULL") {
+      if ($section_type === "'NULL'") {
         $sql = "SELECT TYPE, COUNT(TYPE) FROM CalgarySchools
-         WHERE Sector IS NULL GROUP BY TYPE";
+         WHERE (Sector IS NULL OR Sector = '') GROUP BY TYPE";
       }
       $result = $conn->query($sql);
       if (!$result) {

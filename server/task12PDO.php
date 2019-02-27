@@ -36,7 +36,7 @@
       $statement->bindParam(":input", $section_type);
       if ($section_type === "NULL") {
         $statement = $conn->prepare("SELECT TYPE, COUNT(TYPE) FROM CalgarySchools
-         WHERE Sector IS NULL GROUP BY TYPE");
+         WHERE (Sector IS NULL OR Sector = '') GROUP BY TYPE");
       }
       $statement->execute();
 

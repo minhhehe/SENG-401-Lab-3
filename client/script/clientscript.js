@@ -62,14 +62,27 @@ $(document).ready(function() {
       url: 'http://localhost:80/server/task2.php',
       type: 'post',
       data: {
-        coordinates: $('#flickrInputID').val(),
-        displayOption: $('#displayListID option:selected').val()
+        coordinates: $('#flickrInputID').val()
       },
       success: function(php_script_response) {
         $('#resultSpace2').empty();
         $('#resultSpace2').html(php_script_response);
+        $('#task2ToggleButton').click();
       }
     });
+  });
+
+  $('#task2ToggleButton').on("click", function() {
+    var value = $('#task2ToggleButton').text();
+    if (value === "Show Pictures") {
+      $('#task2JSON').hide();
+      $('#task2Pictures').show();
+      $('#task2ToggleButton').text("Show JSON");
+    } else if (value === "Show JSON") {
+      $('#task2JSON').show();
+      $('#task2Pictures').hide();
+      $('#task2ToggleButton').text("Show Pictures");
+    }
   });
 
 });

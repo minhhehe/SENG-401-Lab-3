@@ -1,6 +1,5 @@
 <?php
   $coordinates = $_POST['coordinates'];
-  $display_selected = $_POST['displayOption'];
   $params = array(
   'api_key' => '334ebb0707c2e188c4522643802154df',
   'method' => 'flickr.photos.search',
@@ -23,16 +22,28 @@
   $rsp2 = json_decode($rsp, true);
   $photos = $rsp2['photos']['photo'];
 
-  switch ($display_selected) {
-    case "JSON":
-      echo $rsp;
-      break;
-    case "Pictures":
-      for ($i = 0; $i<20; $i++) {
-        $imgsrc = 'https://farm'.$photos[$i]["farm"].'.staticflickr.com/'.
-        $photos[$i]["server"] . '/'.$photos[$i]["id"].'_'.$photos[$i]["secret"].'.jpg';
-        echo '<img src="'.$imgsrc.'">';
-      }
-      break;
+  echo "<div id='task2JSON'>";
+  echo $rsp;
+  echo "</div>";
+
+  echo "<div id='task2Pictures'>";
+  for ($i = 0; $i<20; $i++) {
+    $imgsrc = 'https://farm'.$photos[$i]["farm"].'.staticflickr.com/'.
+    $photos[$i]["server"] . '/'.$photos[$i]["id"].'_'.$photos[$i]["secret"].'.jpg';
+    echo '<img src="'.$imgsrc.'">';
   }
+  echo "</div>";
+
+  // switch ($display_selected) {
+  //   case "JSON":
+  //     echo $rsp;
+  //     break;
+  //   case "Pictures":
+  //     for ($i = 0; $i<20; $i++) {
+  //       $imgsrc = 'https://farm'.$photos[$i]["farm"].'.staticflickr.com/'.
+  //       $photos[$i]["server"] . '/'.$photos[$i]["id"].'_'.$photos[$i]["secret"].'.jpg';
+  //       echo '<img src="'.$imgsrc.'">';
+  //     }
+  //     break;
+  // }
  ?>

@@ -5,7 +5,7 @@
 # Update: 2019/02/21: Task 2 Condition check Complete
 # Update: 2019/02/21: Awaiting answer from professor to continue
 # Update: 2019/02/21: Task 2 Complete, Styling is... given up
-# Update: 2019/02/26: Updated task 2 to satisfy more requirements
+# Update: 2019/02/26: Updated task 2 to correctly satisfy requirements
 ## How to connect to the database
 1.  Pull the file `dbConnectorEXAMPLE.php` from the master branch.
 2.  Rename `dbConnectorEXAMPLE.php` to `dbConnector.php`
