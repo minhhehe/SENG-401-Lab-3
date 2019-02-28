@@ -22,7 +22,118 @@
                         $("#output").html(data);
                     });
                 });
+
+                $(".coordinateInput").keyup(function() { validateInputs(); });
+
+                // FIXME delete unused
+                // $("#leftLong").keyup(function(event) {
+                //
+                //
+                //     enableSubmit();
+                // });
+                //
+                // $("#bottomLat").keyup(function(event) {
+                //
+                //     enableSubmit();
+                // });
+                //
+                // $("#rightLong").keyup(function(event) {
+                //
+                //
+                //     enableSubmit();
+                // });
+                //
+                // $("#topLat").keyup(function(event) {
+                //
+                // });
             });
+
+            function validateInputs() {
+                // Test for non-empty
+                if ($(".coordinateInput").val().length == 0) {
+                    disableSubmit();
+                    return;
+                }
+
+                // Test for numeric entry
+                if (!hasNumericVal($("#leftLong"))) {
+                    disableSubmit("Western longitude must be a number");
+                    return;
+                }
+
+                if (!hasNumericVal($("#bottomLat"))) {
+                    disableSubmit("Southern latitude must be a number");
+                    return;
+                }
+
+                if (!hasNumericVal($("#rightLong"))) {
+                    disableSubmit("Eastern longitude must be a number");
+                    return;
+                }
+
+                if (!hasNumericVal($("#topLat"))) {
+                    disableSubmit("Northern latitude must be a number");
+                    return;
+                }
+
+                // Test for acceptable lower numeric range
+                if (!withinLowerBounds(parseFloat($("#leftLong").val()), -180, $("#rightLong"))) {
+                    disableSubmit("Western longitude must be between -180 (inclusive) and eastern longitude (exclusive)");
+                    return;
+                }
+
+                if (!withinLowerBounds(parseFloat($("#bottomLat").val()), -90, $("#topLat"))) {
+                    disableSubmit("Southern latitude must be between -90 (inclusive) and northern latitude (exclusive)");
+                    return;
+                }
+
+                // Test for acceptable upper numeric range
+                if (!withinUpperBounds(parseFloat($("#rightLong").val()), 180, $("#leftLong"))) {
+                    disableSubmit("Eastern longitude must be between western longitude (exclusive) and 180 (inclusive)");
+                    return;
+                }
+
+                if (!withinUpperBounds(parseFloat($("#topLat").val()), 90, $("#bottomLat"))) {
+                    disableSubmit("Northern latitude must be between southern latitude (exclusive) and 90 (inclusive)");
+                    return;
+                }
+
+                enableSubmit();
+            }
+
+            function hasNumericVal(textInput) {
+                return $.isNumeric(textInput.val());
+            }
+
+            function withinLowerBounds(val, min, maxSrc) {
+                if (!hasNumericVal(maxSrc)) {
+                    return false;
+                }
+
+
+                return val >= min && val < parseFloat(maxSrc.val());
+            }
+
+            function withinUpperBounds(val, max, minSrc) {
+                if (!hasNumericVal(minSrc)) {
+                    return false;
+                }
+
+                return val <= max && val > parseFloat(minSrc.val());
+            }
+
+            function enableSubmit() {
+                $("#submit").prop("disabled", false);
+                $("#error").text("");
+            }
+
+            function disableSubmit(errorMessage = null) {
+                $("#submit").prop("disabled", true);
+
+                if (errorMessage !== null) {
+                    $("#error").text(errorMessage);
+                }
+            }
         </script>
     </head>
     <body>
@@ -33,6 +144,7 @@
         <div class="container">
             <div class="inputBlock">
                 <span id="error" class="error"></span>
+                <br>
 
                 <label>Southwest Coordinate</label>
                 <br>
@@ -57,7 +169,7 @@
 
                 <br><br>
 
-                <button id="submit">Submit</button>
+                <button id="submit" disabled>Submit</button>
 
             </div>
             <div id="output"></div>
