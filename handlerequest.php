@@ -54,19 +54,19 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         exit("Error: Missing requestType parameter.");
     }
 
-    if (!empty($_GET["leftLong"])) {
+    if (isset($_GET["leftLong"])) {
         $leftLong = validateInput($_GET["leftLong"]);
     }
 
-    if (!empty($_GET["bottomLat"])) {
+    if (isset($_GET["bottomLat"])) {
         $bottomLat = validateInput($_GET["bottomLat"]);
     }
 
-    if (!empty($_GET["rightLong"])) {
+    if (isset($_GET["rightLong"])) {
         $rightLong = validateInput($_GET["rightLong"]);
     }
 
-    if (!empty($_GET["topLat"])) {
+    if (isset($_GET["topLat"])) {
         $topLat = validateInput($_GET["topLat"]);
     }
 
