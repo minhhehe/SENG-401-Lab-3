@@ -80,11 +80,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 
     </head>
     <body>
-        <div id="banner">
+        <div class="banner">
             <h1>SENG 401 - Lab 3</h1>
             <p>A :() { :|:& };: production</p>
         </div>
-        <div id="container">
+        <div class="container">
             <div id="leftContainer">
                 <div class="inputBlock">
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="get">

@@ -3,7 +3,7 @@ body {
     margin: 0;
 }
 
-#banner {
+.banner {
     color: white;
     background-color: navy;
 
@@ -14,7 +14,7 @@ body {
     text-align: center;
 }
 
-#container {
+.container {
     color: #0F0F0F;
     padding: 10px;
     margin-left: 5%;
