@@ -30,11 +30,18 @@ function getSectorSummary($sector, $format) {
     $sectorCol = "sector";
     $addressCol = "address";
 
-    $query = $GLOBALS["conn"]->prepare("SELECT $typeCol AS 'Type', COUNT($typeCol) AS 'Count'
-            FROM $table
-            WHERE $sectorCol = :sector
-            GROUP BY $typeCol");
-    $query->bindValue(":sector", $sector);
+    if ($sector != "other") {
+        $query = $GLOBALS["conn"]->prepare("SELECT $typeCol AS 'Type', COUNT($typeCol) AS 'Count'
+                FROM $table
+                WHERE $sectorCol = :sector
+                GROUP BY $typeCol");
+        $query->bindValue(":sector", $sector);
+    } else {
+        $query = $GLOBALS["conn"]->prepare("SELECT $typeCol AS 'Type', COUNT($typeCol) AS 'Count'
+                FROM $table
+                WHERE NOT ($sectorCol='NW' OR $sectorCol='NE' OR $sectorCol='SW' OR $sectorCol='SE')
+                GROUP BY $typeCol");
+    }
     $query->execute();
     $results = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -130,6 +137,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
                                 <option value="se"
                                 <?php echo ($inputSector == "se") ? 'selected="selected"' : ''; // Save last checked ?>
                                 >SE</option>
+
+                                <option value="other"
+                                <?php echo ($inputSector == "other") ? 'selected="selected"' : ''; // Save last checked ?>
+                                >Other</option>
                             </select>
                         </p>
 
